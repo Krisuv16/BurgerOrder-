@@ -1,0 +1,16 @@
+{% extends 'burger/base.html' %}
+{% block 'body' %}
+<h1>Burger Section</h1>
+<h2>{{ note }}</h2>
+<form action="{% url 'burger'%}" method="post">
+
+    {% csrf_token %}
+    {{ formset.management_form }}
+
+    {% for form in formset %}
+    {{ form }}
+    <br><br>
+    {% endfor %}
+    <input type="submit" value="Order Burgers">
+</form>
+{% endblock %}
